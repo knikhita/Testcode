@@ -1,0 +1,19 @@
+{
+  "name": "FB Tests : Assignment1",
+  "description": "Automated tests runner",
+  "license": "MIT",
+  "scripts": {
+    "tests": "./node_modules/.bin/wdio wdio.customreporter.conf.js"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "webdriverio": "^4.5.2"
+  },
+  "dependencies": {
+    "es6-promise": "^4.0.5",
+    "octokat": "^0.4.18",
+    "underscore": "^1.8.3",
+    "wdio-mocha-framework": "^0.5.8"
+  },
+  "version": "0.0.1"
+}
