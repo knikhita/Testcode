@@ -1,34 +1,45 @@
-const CustomReporter = require('./reporter/my.custom.reporter')
-exports.config = {
+        const CustomReporter = require('./reporter/my.custom.reporter')
+        exports.config = {
 
-    specs: [
-        './test/specs/fb/*.js'
-    ],
-    capabilities: [{
-        chromeOptions: {
-                    "args": [
-                        "window-size=1400,768",
-                    ],
-                },
-        browserName: 'chrome'
-    }],
+            specs: [
+                './test/specs/fb/*.js'
+            ],
+            allScriptsTimeout: 120000,
+            getPageTimeout: 30000,
 
-    logLevel: 'silent',
-    coloredLogs: true,
-    screenshotPath: 'errorShots',
-    baseUrl: process.env.URL,
-    waitforTimeout: 300000,
-    framework: 'mocha',
+            capabilities: [
+            {
+                 browserName: 'chrome'
+                chromeOptions: {
+                            args: [
+            '--incognito',
+            'disable-extensions',
+            '--start-fullscreen',
+            'show-fps-counter=true',
+            '--headless'
+            // '--user-data-dir=Google/Chrome'
+          ]
 
-    reporters: [CustomReporter.reporter, 'dot'],
-    reporterOptions: {
-        outputDir: './'
-    }
+                        },
+            }
+            ],
 
-    onComplete: function() {
-      
+            logLevel: 'silent',
+            coloredLogs: true,
+            screenshotPath: 'errorShots',
+            baseUrl: process.env.URL,
+            waitforTimeout: 300000,
+            framework: 'mocha',
 
-      reporterOptions : 'mentioned',
-      CustomReporter : process.env.URL 
-    }
-};
+            reporters: [CustomReporter.reporter, 'dot'],
+            reporterOptions: {
+                outputDir: './'
+            }
+
+            onComplete: function() {
+              
+
+              reporterOptions : 'mentioned',
+              CustomReporter : process.env.URL 
+            }
+        };
